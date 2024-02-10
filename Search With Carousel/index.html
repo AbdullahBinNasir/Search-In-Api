@@ -84,12 +84,33 @@
 
                         userlist.innerHTML = "";
 
-                        filterMovies.forEach(element => {
+                        filterMovies.forEach((element,index) => {
+                            let carId = `carId${index}`
                             // console.log(element.Title)
                             userlist.innerHTML += `
                     <div class="col-lg-3">
                 <div class="card mt-2 text-center">
-                    <img src="${element.Images}" class="card-img-top" alt="...">
+                    <div id="${carId}" class="carousel slide">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="${element.Images[0]}" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="${element.Images[1]}" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="${element.Images[2]}" class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#${carId}" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#${carId}" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
                     <div class="card-body">
                       <h5 class="card-title">${element.Title}</h5>
                       <p class="card-text">${element.Actors}</p>
